@@ -19,10 +19,10 @@ function loadImg(){
 		});
 		canvas.add(hole_obj);
         });
-	newImage();
+	new_image();
 }
 
-function newImage()
+function new_image()
 {
 	fabric.Image.fromURL("ball.png", function(Img) {
 	ball_obj=Img;
@@ -37,16 +37,16 @@ function newImage()
 }
 
 window.addEventListener("keydown", myKeyDown);
-if((ball_x==hole_x)&&(ball_y==hole_y)){
-	canvas.remove(ball_obj);
 function myKeyDown(e)
 {
 	keyPressed = e.keyCode;
 	console.log(keyPressed);
+	if((ball_x==hole_x)&&(ball_y==hole_y)){
+		canvas.remove(ball_obj);
 document.getElementById("hd3").innerHTML="Você atingiu o objetivo!!!"
 document.getElementById("myCanvas").style.borderColor="red";
 	
-	else{
+	}else{
 		if(keyPressed == '38')
 		{
 			up();
@@ -71,11 +71,11 @@ document.getElementById("myCanvas").style.borderColor="red";
 	
 	function up()
 	{
-if(ball_y <=450)
+if(ball_y >=0)
 {
-	ball_y = ball_y + block_image_height;
-	console.log("Altura da imagem do bloco t = " + block_image_height);
-	console.log("Quando a tecla direcional cima é pressionada, X = " + ball_x + " , Y = "+ball_y);
+	ball_y = ball_y - block_image_height;
+	console.log("Altura da imagem do bloco t = " - block_image_height);
+	console.log("Quando a tecla direcional cima é pressionada, X = " - ball_x - " , Y = "-ball_y);
 	canvas.remove(ball_obj);
 	new_image();
 }
@@ -95,11 +95,11 @@ new_image();
 
 	function left()
 	{
-if(ball_X >5)
+if(ball_x >=0)
 {
-ball_y = ball_y + block_image_height;
-console.log("Altura da imagem do bloco t = " + block_image_height);
-console.log("Quando a tecla direcional esquerda é pressionada, X = " + ball_x + " , Y = "+ball_y);
+ball_x = ball_x - block_image_height;
+console.log("Altura da imagem do bloco t = " - block_image_height);
+console.log("Quando a tecla direcional esquerda é pressionada, X = " - ball_x - " , Y = "-ball_y);
 canvas.remove(ball_obj);
 new_image();
 }
@@ -107,9 +107,9 @@ new_image();
 
 	function right()
 	{
-if(ball_X <=1050)
+if(ball_x <=1050)
 {
-ball_y = ball_y + block_image_height;
+ball_x = ball_x + block_image_height;
 console.log("Altura da imagem do bloco t = " + block_image_height);
 console.log("Quando a tecla direcional direita é pressionada, X = " + ball_x + " , Y = "+ball_y);
 canvas.remove(ball_obj);
